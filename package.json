@@ -1,0 +1,28 @@
+{
+  "name": "merntaskserver",
+  "version": "1.0.0",
+  "description": "TASK API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mauromolina/react-tasks-server.git"
+  },
+  "author": "Mauro Molina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mauromolina/react-tasks-server/issues"
+  },
+  "homepage": "https://github.com/mauromolina/react-tasks-server#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.0"
+  }
+}
