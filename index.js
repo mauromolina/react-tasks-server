@@ -1,6 +1,7 @@
 const express = require('express');
 const { response } = require('express');
 const connectDB = require('./config/db');
+const cors = require('cors');
 
 // crear servidor
 const app = express();
@@ -9,6 +10,7 @@ const app = express();
 connectDB();
 
 app.use(express.json({ extended:true }));
+app.use(cors());
 
 // puerto de la app
 const PORT = process.env.PORT || 4000;
