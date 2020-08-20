@@ -32,7 +32,7 @@ exports.createTask = async (req, res) => {
 exports.getProjectTasks = async (req, res) => {
 
     try {
-        const { project } = req.body;
+        const { project } = req.query;
         const projectExists = await Project.findById(project);
         if(!projectExists){
             return res.status(404).json({msg: 'Proyecto no encontrado'})
@@ -62,10 +62,9 @@ exports.updateTask = async (req, res) => {
         if(projectExists.owner.toString() !== req.user.id) {
             return res.status(401).json({msg: 'No autorizado'})
         }
-
         const newTask = {};
-        if(name) newTask.name = name;
-        if(status) newTask.status = status;
+        newTask.name = name;
+        newTask.status = status;
 
         taskExists = await Task.findOneAndUpdate({_id: req.params.id}, newTask, { new: true});
         res.json({taskExists});
@@ -78,7 +77,7 @@ exports.updateTask = async (req, res) => {
 
 exports.deleteTask = async (req, res) => {
     try {
-        const { project } = req.body;
+        const { project } = req.query;
         const projectExists = await Project.findById(project);
         let taskExists = await Task.findById(req.params.id);
         if(!taskExists){
